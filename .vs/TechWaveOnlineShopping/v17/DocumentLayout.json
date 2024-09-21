@@ -1,0 +1,138 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Cloud_Application\\Assignment 1\\SourceCode\\TechWaveOnlineShopping\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{19718E65-579D-4748-8050-E2E084639D25}|TechWaveOnlineShopping.csproj|d:\\cloud_application\\assignment 1\\sourcecode\\techwaveonlineshopping\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{19718E65-579D-4748-8050-E2E084639D25}|TechWaveOnlineShopping.csproj|solutionrelative:views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{19718E65-579D-4748-8050-E2E084639D25}|TechWaveOnlineShopping.csproj|d:\\cloud_application\\assignment 1\\sourcecode\\techwaveonlineshopping\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{19718E65-579D-4748-8050-E2E084639D25}|TechWaveOnlineShopping.csproj|solutionrelative:controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{19718E65-579D-4748-8050-E2E084639D25}|TechWaveOnlineShopping.csproj|d:\\cloud_application\\assignment 1\\sourcecode\\techwaveonlineshopping\\views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{19718E65-579D-4748-8050-E2E084639D25}|TechWaveOnlineShopping.csproj|solutionrelative:views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{19718E65-579D-4748-8050-E2E084639D25}|TechWaveOnlineShopping.csproj|d:\\cloud_application\\assignment 1\\sourcecode\\techwaveonlineshopping\\views\\customer\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{19718E65-579D-4748-8050-E2E084639D25}|TechWaveOnlineShopping.csproj|solutionrelative:views\\customer\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{19718E65-579D-4748-8050-E2E084639D25}|TechWaveOnlineShopping.csproj|d:\\cloud_application\\assignment 1\\sourcecode\\techwaveonlineshopping\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{19718E65-579D-4748-8050-E2E084639D25}|TechWaveOnlineShopping.csproj|solutionrelative:views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{19718E65-579D-4748-8050-E2E084639D25}|TechWaveOnlineShopping.csproj|d:\\cloud_application\\assignment 1\\sourcecode\\techwaveonlineshopping\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{19718E65-579D-4748-8050-E2E084639D25}|TechWaveOnlineShopping.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{e8b06f52-6d01-11d2-aa7d-00c04f990343}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Cloud_Application\\Assignment 1\\SourceCode\\TechWaveOnlineShopping\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\Index.cshtml",
+              "ToolTip": "D:\\Cloud_Application\\Assignment 1\\SourceCode\\TechWaveOnlineShopping\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "Views\\Home\\Index.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAABKAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-09-21T11:13:25.185Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Cloud_Application\\Assignment 1\\SourceCode\\TechWaveOnlineShopping\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "D:\\Cloud_Application\\Assignment 1\\SourceCode\\TechWaveOnlineShopping\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAABYAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-21T10:34:04.709Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "D:\\Cloud_Application\\Assignment 1\\SourceCode\\TechWaveOnlineShopping\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "D:\\Cloud_Application\\Assignment 1\\SourceCode\\TechWaveOnlineShopping\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AQIAABsAAAAAAAAAAAAiwCYAAABHAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-09-21T10:26:43.177Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "D:\\Cloud_Application\\Assignment 1\\SourceCode\\TechWaveOnlineShopping\\Controllers\\AccountController.cs",
+              "RelativeDocumentMoniker": "Controllers\\AccountController.cs",
+              "ToolTip": "D:\\Cloud_Application\\Assignment 1\\SourceCode\\TechWaveOnlineShopping\\Controllers\\AccountController.cs",
+              "RelativeToolTip": "Controllers\\AccountController.cs",
+              "ViewState": "AQIAACAAAAAAAAAAAAAAwCUAAAAmAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-21T10:06:35.759Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Register.cshtml",
+              "DocumentMoniker": "D:\\Cloud_Application\\Assignment 1\\SourceCode\\TechWaveOnlineShopping\\Views\\Customer\\Register.cshtml",
+              "RelativeDocumentMoniker": "Views\\Customer\\Register.cshtml",
+              "ToolTip": "D:\\Cloud_Application\\Assignment 1\\SourceCode\\TechWaveOnlineShopping\\Views\\Customer\\Register.cshtml",
+              "RelativeToolTip": "Views\\Customer\\Register.cshtml",
+              "ViewState": "AQIAADYAAAAAAAAAAAAAADgAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-09-21T09:56:27.372Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Login.cshtml",
+              "DocumentMoniker": "D:\\Cloud_Application\\Assignment 1\\SourceCode\\TechWaveOnlineShopping\\Views\\Account\\Login.cshtml",
+              "RelativeDocumentMoniker": "Views\\Account\\Login.cshtml",
+              "ToolTip": "D:\\Cloud_Application\\Assignment 1\\SourceCode\\TechWaveOnlineShopping\\Views\\Account\\Login.cshtml",
+              "RelativeToolTip": "Views\\Account\\Login.cshtml",
+              "ViewState": "AQIAACcAAAAAAAAAAAAAwCgAAAACAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-09-21T09:55:27.583Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

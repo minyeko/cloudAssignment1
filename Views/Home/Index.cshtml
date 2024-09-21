@@ -1,0 +1,14 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    @if (TempData["LoginMessage"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["LoginMessage"]
+        </div>
+    }
+    <p>TechWave Online Shooping. Free Delivery if you order more than $200.</p>
+</div>
