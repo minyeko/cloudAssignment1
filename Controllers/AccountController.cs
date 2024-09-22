@@ -33,6 +33,7 @@ namespace TechWaveOnlineShopping.Controllers
                 // (e.g., set session, cookies, etc.)
                 HttpContext.Session.SetString("FirstName", user.FirstName);
                 HttpContext.Session.SetString("Email", user.Email);
+                HttpContext.Session.SetString("IsAdmin", user.IsAdmin.ToString());
                 
                 // Set a login success message
                 TempData["LoginMessage"] = $"Welcome, {user.FirstName}!";

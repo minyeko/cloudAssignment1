@@ -126,3 +126,4 @@ D:\Cloud_Application\Assignment 1\SourceCode\TechWaveOnlineShopping\obj\Debug\ne
 D:\Cloud_Application\Assignment 1\SourceCode\TechWaveOnlineShopping\obj\Debug\net8.0\TechWaveOnlineShopping.genruntimeconfig.cache
 D:\Cloud_Application\Assignment 1\SourceCode\TechWaveOnlineShopping\obj\Debug\net8.0\ref\TechWaveOnlineShopping.dll
 D:\Cloud_Application\Assignment 1\SourceCode\TechWaveOnlineShopping\bin\Debug\net8.0\BCrypt.Net-Next.dll
+D:\Cloud_Application\Assignment 1\SourceCode\TechWaveOnlineShopping\obj\Debug\net8.0\TechWaveOnlineShopping.sourcelink.json

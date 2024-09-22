@@ -29,5 +29,8 @@ namespace TechWaveOnlineShopping.Models
         [Required(ErrorMessage = "Address is required")]
         [StringLength(200)]
         public string Address { get; set; }
+
+        public bool IsAdmin { get; set; } = false;
+
     }
 }
