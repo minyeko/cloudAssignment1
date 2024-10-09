@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using TechWaveOnlineShopping.Data;
 using TechWaveOnlineShopping.Helpers;
 using TechWaveOnlineShopping.Models;
+using TechWaveOnlineShopping.ViewModels;
 
 namespace TechWaveOnlineShopping.Controllers
 {
@@ -17,8 +18,35 @@ namespace TechWaveOnlineShopping.Controllers
             _webHostEnvironment = webHostEnvironment;
         }
 
-        // GET: Product/Create
-        [HttpGet]
+
+		public IActionResult Index()
+		{
+			var result = IsAdminUser();
+			if (result != null)
+			{
+				return result; // Only allow admin users to add products
+			}
+
+			// Fetch your products from the database or service
+			var products = _context.Products.OrderByDescending(x => x.Id).ToList();
+
+			// If you're using a ViewModel, map your products to the ViewModel
+			var productViewModels = products.Select(p => new ProductViewModel
+			{
+				Id = p.Id,
+				Name = p.Name,
+				Price = p.Price,
+				Description = p.Description,
+				Quantity = p.Quantity
+			});
+
+			// Pass the data to the view
+			return View(productViewModels);//productViewModels
+        }
+
+
+		// GET: Product/Create
+		[HttpGet]
         public IActionResult Create()
         {
             var result = IsAdminUser();
@@ -61,8 +89,107 @@ namespace TechWaveOnlineShopping.Controllers
         }
 
 
-        // This action returns the image file from the database
-        public IActionResult GetImage(int id)
+		public IActionResult Edit(int id)
+		{
+            var result = IsAdminUser();
+            if (result != null)
+            {
+                return result; // Only allow admin users to add products
+            }
+
+            var product = _context.Products.Where(x => x.Id == id).FirstOrDefault();
+
+			if (product == null)
+			{
+				return NotFound();
+			}
+
+			return View(product);
+		}
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, Product product, IFormFile? PhotoFile)
+        {
+            if (id != product.Id)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    // Retrieve the product from the database
+                    var existingProduct = await _context.Products.FindAsync(id);
+                    if (existingProduct == null)
+                    {
+                        return NotFound();
+                    }
+
+                    // Update the product fields
+                    existingProduct.Name = product.Name;
+                    existingProduct.Description = product.Description;
+                    existingProduct.Price = product.Price;
+                    existingProduct.Quantity = product.Quantity;
+
+                    // Check if a new photo has been uploaded
+                    if (PhotoFile != null && PhotoFile.Length > 0)
+                    {
+                        using (var memoryStream = new MemoryStream())
+                        {
+                            await PhotoFile.CopyToAsync(memoryStream);
+                            existingProduct.Photo = memoryStream.ToArray(); // Store the image as byte array
+                        }
+                    }
+
+                    // Save changes to the database
+                    _context.Update(existingProduct);
+                    await _context.SaveChangesAsync();
+
+                    TempData["SuccessMessage"] = "Product updated successfully!";
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!ProductExists(product.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+
+                return RedirectToAction(nameof(Index));
+            }
+
+            // If the model state is not valid, return to the Edit view with the current model
+            return View(product);
+        }
+
+        private bool ProductExists(int id)
+        {
+            return _context.Products.Any(e => e.Id == id);
+        }
+
+
+        public IActionResult View(int id)
+		{
+            var product = _context.Products.Where(x => x.Id == id).FirstOrDefault();
+
+			if (product == null)
+			{
+				return NotFound();
+			}
+
+			return View(product);
+		}
+
+
+		// This action returns the image file from the database
+		public IActionResult GetImage(int id)
         {
             var product = _context.Products.FirstOrDefault(p => p.Id == id);
 

@@ -1,0 +1,75 @@
+﻿@model TechWaveOnlineShopping.Models.Product
+
+<h2>Edit Product</h2>
+
+<form asp-action="Edit" method="post" enctype="multipart/form-data">
+
+    <!-- Product Name -->
+    <div class="form-group row mb-3">
+        <label for="Name" class="col-sm-3 col-form-label">Product Name</label>
+        <div class="col-sm-9">
+            <input asp-for="Name" class="form-control" id="Name" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+    </div>
+
+    <!-- Product Description -->
+    <div class="form-group row mb-3">
+        <label for="Description" class="col-sm-3 col-form-label">Description</label>
+        <div class="col-sm-9">
+            <textarea asp-for="Description" class="form-control" id="Description"></textarea>
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+    </div>
+
+    <!-- Product Price -->
+    <div class="form-group row mb-3">
+        <label for="Price" class="col-sm-3 col-form-label">Price</label>
+        <div class="col-sm-9">
+            <input asp-for="Price" class="form-control" id="Price" />
+            <span asp-validation-for="Price" class="text-danger"></span>
+        </div>
+    </div>
+
+    <!-- Product Quantity -->
+    <div class="form-group row mb-3">
+        <label for="Quantity" class="col-sm-3 col-form-label">Quantity</label>
+        <div class="col-sm-9">
+            <input asp-for="Quantity" class="form-control" id="Quantity" />
+            <span asp-validation-for="Quantity" class="text-danger"></span>
+        </div>
+    </div>
+
+    <!-- Current Photo -->
+    @if (Model.Photo != null)
+    {
+        <div class="form-group row mb-3">
+            <label class="col-sm-3 col-form-label">Current Photo</label>
+            <div class="col-sm-9">
+                <img src="data:image;base64,@Convert.ToBase64String(Model.Photo)" alt="Product Image" style="width: 100px; height: 100px;" />
+            </div>
+        </div>
+    }
+
+    <!-- Upload New Photo -->
+    <div class="form-group row mb-3">
+        <label for="Photo" class="col-sm-3 col-form-label">Upload New Photo</label>
+        <div class="col-sm-9">
+            <input type="file" name="PhotoFile" class="form-control" id="PhotoFile" />
+            <span asp-validation-for="Photo" class="text-danger"></span>
+        </div>
+    </div>
+
+    <!-- Submit Button -->
+    <div class="form-group row mb-3">
+        <div class="col-sm-9 offset-sm-3">
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+            <a asp-action="Index" class="btn btn-secondary">Back to Product List</a>
+        </div>
+    </div>
+
+</form>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

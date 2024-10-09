@@ -1,14 +1,144 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model IEnumerable<TechWaveOnlineShopping.Models.Product>
+@{
+	ViewData["Title"] = "Home";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    @if (TempData["LoginMessage"] != null)
-    {
-        <div class="alert alert-success">
-            @TempData["LoginMessage"]
-        </div>
-    }
-    <p>TechWave Online Shooping. Free Delivery if you order more than $200.</p>
+	@if (TempData["LoginMessage"] != null)
+	{
+		<div class="alert alert-success">
+			@TempData["LoginMessage"]
+		</div>
+	}
+	<p>TechWave Online Shooping. Free Delivery if you order more than $200.</p>
 </div>
+
+<h2>Products</h2>
+
+<!-- Toast Notification -->
+<div class="toast bg-success text-white" id="successToast" role="alert" aria-live="assertive" aria-atomic="true" style="position: absolute; top: 20px; right: 20px; z-index: 1050;">
+	<div class="toast-body">
+		Product added to cart successfully!
+	</div>
+</div>
+
+
+<!-- Table to display products -->
+<table id="productTable" class="display" style="width:100%;">
+	<thead>
+		<tr>
+			<th>Image</th>
+			<th>Name</th>
+			<th>Description</th>
+			<th>Price</th>
+			<th>Quantity</th>
+			<th>Actions</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var product in Model)
+		{
+			<tr>
+				<!-- Product Image -->
+				<td>
+					<img src="@(product.Photo != null && product.Photo.Length > 0
+                         ? $"data:image;base64,{Convert.ToBase64String(product.Photo)}"
+                         : "/images/default-product.png")"
+						 alt="@product.Name" style="max-width: 100px;" />
+				</td>
+				<!-- Product Name -->
+				<td>@product.Name</td>
+				<!-- Product Description -->
+				<td>
+					@if (!string.IsNullOrEmpty(product.Description))
+					{
+						@product.Description
+					}
+					else
+					{
+						<span class="text-muted">No description available.</span>
+					}
+				</td>
+				<!-- Product Price -->
+				<td>$@product.Price</td>
+				<!-- Quantity Selector -->
+				<td>
+					<div class="input-group">
+						<button class="btn btn-outline-secondary" type="button" onclick="decreaseQuantity(@product.Id)">-</button>
+						<input type="number" id="quantity_@product.Id" value="1" min="1" class="form-control text-center" style="max-width: 60px;" />
+						<button class="btn btn-outline-secondary" type="button" onclick="increaseQuantity(@product.Id)">+</button>
+					</div>
+				</td>
+				<!-- Actions (Edit, View) -->
+				<td>
+					<button class="btn btn-sm btn-primary" onclick="addToCart(@product.Id , )">Add to Cart</button>
+					<a href="@Url.Action("View", "Product", new { id = product.Id })" class="btn btn-info btn-sm">View</a>
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>
+<br />
+<br />
+
+@section Scripts {
+	<script>
+		// Initialize DataTable
+		$(document).ready(function () {
+			$('#productTable').DataTable({
+				"paging": true,
+				"searching": true,
+				"ordering": true,
+				"info": true
+			});
+		});
+
+		// JavaScript functions for quantity adjustment
+		function decreaseQuantity(productId) {
+			let input = document.getElementById('quantity_' + productId);
+			let currentValue = parseInt(input.value);
+			if (currentValue > 1) {
+				input.value = currentValue - 1;
+			}
+		}
+
+		function increaseQuantity(productId) {
+			let input = document.getElementById('quantity_' + productId);
+			input.value = parseInt(input.value) + 1;
+		}
+
+		// Add to Cart function (AJAX example)
+		// Add to cart function
+		function addToCart(productId) {
+			debugger;
+			// Get the quantity value from the input field by ID
+			var quantity = $('#quantity_' + productId).val();
+
+			$.ajax({
+				url: '@Url.Action("AddToCart", "Cart")',
+				method: 'POST',
+				data: { productId: productId, quantity: quantity },
+				success: function (data) {
+					// Update cart count in the navbar
+					updateCartCount();
+					$('#successToast').toast({ delay: 3000 });
+					$('#successToast').toast('show');
+				},
+				error: function () {
+					alert('Error adding product to cart.');
+				}
+			});
+		}
+
+		// Function to update cart count
+		function updateCartCount() {
+			$.ajax({
+				url: '@Url.Action("GetCartCount", "Cart")',
+				success: function (count) {
+					$('#cart-count').text(count);
+				}
+			});
+		}
+
+	</script>
+}

@@ -1,0 +1,155 @@
+﻿@model List<Product>
+
+<h2>Your Cart</h2>
+
+@if (Model != null && Model.Any())
+{
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var product in Model)
+            {
+                <tr id="cartItem_@product.Id">
+                    <td>
+                        <img src="data:image;base64,@Convert.ToBase64String(product.Photo)" alt="Product Image" style="width: 100px; height: 100px;" />
+                    </td>
+                    <td>@product.Name</td>
+                    <td>$@product.Price</td>
+                    <td>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <button class="btn btn-outline-secondary" type="button" onclick="updateQuantity(@product.Id, -1)">-</button>
+                            </div>
+                            <input type="text" class="form-control text-center" id="quantity_@product.Id" value="@product.Quantity" style="max-width: 60px;" readonly />
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary" type="button" onclick="updateQuantity(@product.Id, 1)">+</button>
+                            </div>
+                        </div>
+                    </td>
+                    <td id="total_@product.Id">$@(product.Price * product.Quantity)</td>
+                    <td>
+                        <button class="btn btn-danger" onclick="removeFromCart(@product.Id)">Delete</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <div class="text-right">
+        <strong>Total Price: </strong><span id="cartTotal">$@Model.Sum(p => p.Price * p.Quantity).ToString("F2")</span>
+    </div>
+
+    <button class="btn btn-success mt-3" id="checkoutBtn">Checkout</button>
+}
+else
+{
+    <div class="alert alert-warning" role="alert">
+        Your cart is empty!
+    </div>
+}
+
+<script>
+    // Update quantity in cart
+    function updateQuantity(productId, change) {
+        var quantityInput = document.getElementById(`quantity_${productId}`);
+        var currentQuantity = parseInt(quantityInput.value);
+        var newQuantity = currentQuantity + change;
+
+        if (newQuantity <= 0) {
+            removeFromCart(productId); // If quantity is zero or less, remove the product
+            getCartCount();
+            return;
+        }
+
+        $.ajax({
+            type: "POST",
+            url: "/Cart/UpdateQuantity",
+            data: { productId: productId, quantity: newQuantity },
+            success: function (response) {
+                // Update the quantity and total price on the UI
+                quantityInput.value = newQuantity;
+                document.getElementById(`total_${productId}`).innerText = "$" + (response.newTotalPrice).toFixed(2);
+                document.getElementById("cartTotal").innerText = "$" + (response.cartTotal).toFixed(2);
+            },
+            error: function (xhr, status, error) {
+                console.error("Error updating quantity: ", error);
+            }
+        });
+    }
+
+    // Remove product from cart
+    function removeFromCart(productId) {
+        $.ajax({
+            type: "POST",
+            url: "/Cart/RemoveFromCart",
+            data: { productId: productId },
+            success: function (response) {
+                // Remove the product row from the table
+                var row = document.getElementById(`cartItem_${productId}`);
+                row.parentNode.removeChild(row);
+                getCartCount();
+
+                // Update cart total
+                document.getElementById("cartTotal").innerText = "$" + (response.cartTotal).toFixed(2);
+
+                if (response.cartTotal == 0) {
+                    // Show empty cart message if no items are left
+                    document.querySelector('table').remove();
+                    document.querySelector('.text-right').remove();
+                    document.querySelector('.btn-success').remove();
+                    document.body.innerHTML += '<div class="alert alert-warning" role="alert">Your cart is empty!</div>';
+                }
+            },
+            error: function (xhr, status, error) {
+                console.error("Error removing product: ", error);
+            }
+        });
+    }
+
+        $(document).ready(function () {
+
+            // Handle the Checkout button click
+            $("#checkoutBtn").click(function (e) {
+                e.preventDefault();
+
+                // Call the Checkout action in the controller using AJAX
+                $.ajax({
+                    type: "POST",
+                    url: '/Cart/Checkout', // The URL for the Checkout action
+                success: function (orderId) {
+                        debugger;
+                    if (orderId > 0) {
+                            // Show a toast message for success
+                        showSuccess('Your order has been successfully placed!');
+
+                            // Redirect to Order Confirmation page
+                        window.location.href = "/Order/Confirmation?orderId=" + orderId;
+                        }
+                    if (orderId == -1) {
+                        // Show an error message
+                        showError('Please login first before checkout.');
+                    }else {
+                            // Show an error message
+                        showError('There was an issue with your checkout. Please try again.');
+                        }
+                    },
+                    error: function () {
+                        // Show an error message if the request fails
+                    showError('An unexpected error occurred.');
+                    }
+                });
+            });
+        });
+
+ 
+    
+</script>

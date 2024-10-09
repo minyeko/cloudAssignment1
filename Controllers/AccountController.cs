@@ -32,6 +32,7 @@ namespace TechWaveOnlineShopping.Controllers
                 // Password is correct, proceed with login
                 // (e.g., set session, cookies, etc.)
                 HttpContext.Session.SetString("FirstName", user.FirstName);
+                HttpContext.Session.SetString("CustomerId", user.CustomerId.ToString());
                 HttpContext.Session.SetString("Email", user.Email);
                 HttpContext.Session.SetString("IsAdmin", user.IsAdmin.ToString());
                 

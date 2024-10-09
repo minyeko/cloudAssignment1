@@ -1,0 +1,35 @@
+﻿@model TechWaveOnlineShopping.ViewModels.OrderConfirmationViewModel
+
+@{
+    ViewData["Title"] = "Order Confirmation";
+}
+
+<h2>Order Confirmation</h2>
+
+<div class="alert alert-success" role="alert">
+    <h4 class="alert-heading">Thank you for your order!</h4>
+    <p>Your order has been successfully placed.</p>
+    <hr>
+    <p><strong>Order ID:</strong> @Model.OrderId</p>
+    <p><strong>Customer Name:</strong> @Model.CustomerName</p>
+    <p><strong>Order Status:</strong> @Model.OrderStatus</p>
+    <p><strong>Order Date:</strong> @Model.CreatedDate.ToString("f")</p>
+    <hr>
+    <h5>Order Details:</h5>
+    <ul class="list-group">
+        @foreach (var item in Model.OrderItems)
+        {
+            <li class="list-group-item">
+                <strong>@item.ProductName</strong> - Quantity: @item.Quantity, Price: @item.Price.ToString("C")
+            </li>
+        }
+    </ul>
+    <hr>
+    <p><strong>Total Amount:</strong> @Model.TotalAmount.ToString("C")</p>
+</div>
+
+<a asp-controller="Home" asp-action="Index" class="btn btn-primary">Continue Shopping</a>
+
+    <br />
+    <br />
+    <br />

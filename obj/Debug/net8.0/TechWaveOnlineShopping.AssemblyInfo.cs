@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TechWaveOnlineShopping")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7de6cafc06d163c8545e178afbdd636bb809edf3")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+76c91d6e9d587d88717c1a4811b57d4a7f74108e")]
 [assembly: System.Reflection.AssemblyProductAttribute("TechWaveOnlineShopping")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TechWaveOnlineShopping")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

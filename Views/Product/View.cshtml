@@ -1,0 +1,58 @@
+﻿@model TechWaveOnlineShopping.Models.Product
+
+@{
+	ViewData["Title"] = "Product Details";
+}
+
+<h2>@Model.Name</h2>
+
+<div class="card mb-3">
+	<div class="row g-0">
+		<div class="col-md-4">
+			<!-- Product Image -->
+			@if (Model.Photo != null && Model.Photo.Length > 0)
+			{
+				<img src="data:image;base64,@(Convert.ToBase64String(Model.Photo))" class="img-fluid rounded-start" alt="Product Image" />
+			}
+			else
+			{
+				<img src="/images/default-product.png" class="img-fluid rounded-start" alt="No Image Available" />
+			}
+		</div>
+		<div class="col-md-8">
+			<div class="card-body">
+				<h5 class="card-title">@Model.Name</h5>
+				<p class="card-text">
+					<strong>Description: </strong>
+					@Model.Description
+				</p>
+				<p class="card-text">
+					<strong>Price: </strong>$@Model.Price
+				</p>
+				<p class="card-text">
+					<strong>Quantity Available: </strong>@Model.Quantity
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-12">
+		<!-- Buttons -->
+		@if (Context != null && Context.Session != null && Context.Session.GetString("IsAdmin") != null)
+		{
+			if (bool.Parse(Context.Session.GetString("IsAdmin")) == true)
+			{
+				<a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Edit Product</a>
+				<a asp-action="Index" class="btn btn-secondary">Back to Product List</a>
+			}
+		}
+
+		<a asp-controller="Home" asp-action="Index" class="btn btn-secondary">Back to Product List</a>
+	</div>
+</div>
+
+@section Scripts {
+	<!-- Any additional scripts if necessary -->
+}
